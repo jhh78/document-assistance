@@ -1,4 +1,5 @@
 import { shuffle } from "lodash";
+import { RefObject } from "react";
 
 export const shuffleCsvData = (data: string[]) => {
   return shuffle(data);
@@ -20,10 +21,14 @@ export const formatTime = (seconds: number) => {
 export const handleRestart = (
   setIsCleared: (value: boolean) => void,
   setCsvData: (data: string[]) => void,
-  refRawCsvData: React.MutableRefObject<string[]>,
-  inputRef: React.RefObject<HTMLInputElement>
+  refRawCsvData: RefObject<string[]>,
+  inputRef: RefObject<HTMLInputElement>,
+  setCorrectAnswers: (value: number) => void,
+  setTotalAnswers: (value: number) => void
 ) => {
   setIsCleared(false);
-  setCsvData(shuffleCsvData(refRawCsvData.current));
+  setCsvData(shuffleCsvData(refRawCsvData.current || []));
+  setCorrectAnswers(0);
+  setTotalAnswers(0);
   inputRef.current?.focus();
 };

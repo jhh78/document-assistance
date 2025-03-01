@@ -15,6 +15,8 @@ const Game = () => {
   );
 
   const [isCleared, setIsCleared] = useState(false);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [totalAnswers, setTotalAnswers] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const refRawCsvData = useRef(csvData);
 
@@ -39,24 +41,31 @@ const Game = () => {
       inputRef.current.value = "";
       inputRef.current.focus();
 
+      setTotalAnswers((prev) => prev + 1);
+
       if (!checkAnswer(inputValue, csvData[0])) {
         triggerShake();
         return;
       }
 
+      setCorrectAnswers((prev) => prev + 1);
       setAnswer(inputValue);
     }
   };
+
+  const accuracy =
+    totalAnswers > 0
+      ? ((correctAnswers / totalAnswers) * 100).toFixed(2)
+      : "0.00";
 
   if (isCleared) {
     return (
       <div className={styles.clearScreen}>
         <h1 className={styles.clearText}>
-          Congratulations! You cleared the game!
+          おめでとうございます！ゲームをクリアしました！
         </h1>
-        <p className={styles.clearText}>
-          Elapsed Time: {formatTime(elapsedTime)}
-        </p>
+        <p className={styles.clearText}>経過時間: {formatTime(elapsedTime)}</p>
+        <p className={styles.clearText}>正確さ: {accuracy}%</p>
         <button
           className={styles.restartButton}
           onClick={() =>
@@ -64,18 +73,24 @@ const Game = () => {
               setIsCleared,
               setCsvData,
               refRawCsvData,
-              inputRef as React.RefObject<HTMLInputElement>
+              inputRef as React.RefObject<HTMLInputElement>,
+              setCorrectAnswers,
+              setTotalAnswers
             )
           }
         >
-          Restart
+          再スタート
         </button>
       </div>
     );
   }
 
   return (
-    <div className={`${styles.gameArea} ${isShaking ? styles.shake : ""}`}>
+    <div
+      className={`${styles.gameArea} ${isShaking ? styles.shake : ""} ${
+        styles.noSelect
+      }`}
+    >
       <div className={styles.textContainer}>
         {!isCleared && <p className={styles.textItem}>{csvData[0]}</p>}
       </div>
@@ -85,7 +100,7 @@ const Game = () => {
         onKeyDown={handleOnKeyDown}
         className={styles.input}
       />
-      <p className={styles.timer}>Elapsed Time: {formatTime(elapsedTime)}</p>
+      <p className={styles.timer}>経過時間: {formatTime(elapsedTime)}</p>
     </div>
   );
 };
