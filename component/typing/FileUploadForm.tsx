@@ -18,7 +18,7 @@ const FileUploadForm = () => {
             return;
           }
 
-          setCsvData(data as unknown as string[]);
+          setCsvData(data[0] as unknown as string[]);
           setScreenMode(GAME_PAGE);
         },
       });

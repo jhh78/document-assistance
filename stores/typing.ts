@@ -21,10 +21,8 @@ export const useTypingGameStore = create<TypingGameStoreType>((set) => ({
   setCsvData: (data) => set({ csvData: data }),
   setScreenMode: (mode) => set({ screenMode: mode }),
   setAnswer: (answer) => {
-    console.log(answer);
-    set((state) => {
-      const newData = state.csvData.filter((data) => data === answer);
-      return { csvData: newData };
-    });
+    set(({ csvData }) => ({
+      csvData: csvData.filter((data) => data !== answer),
+    }));
   },
 }));

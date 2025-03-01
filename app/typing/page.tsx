@@ -7,7 +7,6 @@ import { GAME_PAGE, TITLE_PAGE, useTypingGameStore } from "@/stores/typing";
 
 const Page: NextPage = () => {
   const screenMode = useTypingGameStore((state) => state.screenMode);
-  console.log(screenMode);
 
   return (
     <React.Fragment>
