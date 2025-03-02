@@ -45,6 +45,7 @@ const Game = () => {
     if (event.key === "Enter" && inputRef.current) {
       const inputValue = inputRef.current.value;
       inputRef.current.value = "";
+      inputRef.current.focus();
 
       refTotalAnswers.current += 1;
 
