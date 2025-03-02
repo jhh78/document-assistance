@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { FaVolumeUp } from "react-icons/fa";
 import styles from "@/app/typing/page.module.css";
 import { useTypingGameStore } from "@/stores/typing";
 import useTimer from "@/hooks/useTimer";
@@ -15,13 +16,18 @@ const Game = () => {
   );
 
   const [isCleared, setIsCleared] = useState(false);
-  const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [totalAnswers, setTotalAnswers] = useState(0);
+  const refCorrectAnswers = useRef(0);
+  const refTotalAnswers = useRef(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const refRawCsvData = useRef(csvData);
 
   const elapsedTime = useTimer(!isCleared);
   const { isShaking, triggerShake } = useShake();
+
+  const accuracy =
+    refTotalAnswers.current > 0
+      ? ((refCorrectAnswers.current / refTotalAnswers.current) * 100).toFixed(2)
+      : "0.00";
 
   useEffect(() => {
     if (inputRef.current) {
@@ -39,24 +45,25 @@ const Game = () => {
     if (event.key === "Enter" && inputRef.current) {
       const inputValue = inputRef.current.value;
       inputRef.current.value = "";
-      inputRef.current.focus();
 
-      setTotalAnswers((prev) => prev + 1);
+      refTotalAnswers.current += 1;
 
       if (!checkAnswer(inputValue, csvData[0])) {
         triggerShake();
         return;
       }
 
-      setCorrectAnswers((prev) => prev + 1);
+      refCorrectAnswers.current += 1;
       setAnswer(inputValue);
     }
   };
 
-  const accuracy =
-    totalAnswers > 0
-      ? ((correctAnswers / totalAnswers) * 100).toFixed(2)
-      : "0.00";
+  const handleTTS = (text: string) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "ja-JP"; // 일본어 설정
+    window.speechSynthesis.speak(utterance);
+    inputRef.current?.focus();
+  };
 
   if (isCleared) {
     return (
@@ -74,8 +81,8 @@ const Game = () => {
               setCsvData,
               refRawCsvData,
               inputRef as React.RefObject<HTMLInputElement>,
-              setCorrectAnswers,
-              setTotalAnswers
+              refCorrectAnswers,
+              refTotalAnswers
             )
           }
         >
@@ -94,12 +101,20 @@ const Game = () => {
       <div className={styles.textContainer}>
         {!isCleared && <p className={styles.textItem}>{csvData[0]}</p>}
       </div>
-      <input
-        ref={inputRef}
-        type="text"
-        onKeyDown={handleOnKeyDown}
-        className={styles.input}
-      />
+      <div className={styles.inputWrapper}>
+        <input
+          ref={inputRef}
+          type="text"
+          onKeyDown={handleOnKeyDown}
+          className={styles.input}
+        />
+        <button
+          className={styles.ttsButtonInput}
+          onClick={() => handleTTS(csvData[0])}
+        >
+          <FaVolumeUp />
+        </button>
+      </div>
       <p className={styles.timer}>経過時間: {formatTime(elapsedTime)}</p>
     </div>
   );

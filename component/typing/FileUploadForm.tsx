@@ -12,13 +12,14 @@ const FileUploadForm = () => {
     const file = event.target.files?.[0];
     if (file) {
       Papa.parse(file, {
-        complete: ({ data, errors }) => {
-          if (errors.length > 0) {
+        complete: ({ data }) => {
+          const mergedData = data.flat();
+          if (mergedData.length < 1) {
             alert("Failed to parse CSV file");
             return;
           }
 
-          setCsvData(data[0] as unknown as string[]);
+          setCsvData(mergedData as string[]);
           setScreenMode(GAME_PAGE);
         },
       });

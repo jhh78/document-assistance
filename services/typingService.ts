@@ -23,12 +23,12 @@ export const handleRestart = (
   setCsvData: (data: string[]) => void,
   refRawCsvData: RefObject<string[]>,
   inputRef: RefObject<HTMLInputElement>,
-  setCorrectAnswers: (value: number) => void,
-  setTotalAnswers: (value: number) => void
+  refCorrectAnswers: RefObject<number>,
+  refTotalAnswers: RefObject<number>
 ) => {
   setIsCleared(false);
   setCsvData(shuffleCsvData(refRawCsvData.current || []));
-  setCorrectAnswers(0);
-  setTotalAnswers(0);
   inputRef.current?.focus();
+  refCorrectAnswers.current = 0;
+  refTotalAnswers.current = 0;
 };
