@@ -1,21 +1,28 @@
-"use client";
 import Link from "next/link";
 import styles from "@/app/page.module.css";
 import { SlGameController } from "react-icons/sl";
+import { JSX } from "react";
+// import { MdOutlineSwapVerticalCircle } from "react-icons/md";
 
-const MENUS = [
+const MENUS: Array<{
+  name: string;
+  className?: string;
+  description: string;
+  icon: JSX.Element;
+  link: string;
+}> = [
   {
     name: "Typing Game",
-    className: styles.typingGame,
-    description: "Injoy the typing game",
+    className: styles.onlyPC,
+    description: "Enjoy typing games and measure your accuracy",
     icon: <SlGameController />,
     link: "/typing",
   },
   // {
-  //   name: "Tool 2",
-  //   description: "Description for Tool 2",
-  //   icon: <FaWrench />,
-  //   link: "/tool2",
+  //   name: "Text Converter",
+  //   description: "Convert text to another format",
+  //   icon: <MdOutlineSwapVerticalCircle />,
+  //   link: "/converter",
   // },
   // {
   //   name: "Tool 3",

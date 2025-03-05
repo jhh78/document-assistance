@@ -9,9 +9,10 @@ import {
   formatTime,
   handleRestart,
 } from "@/services/typingService";
+import { isEmpty } from "lodash";
 
 const Game = () => {
-  const { csvData, setCsvData, setAnswer } = useTypingGameStore(
+  const { csvData, language, setCsvData, setAnswer } = useTypingGameStore(
     (state) => state
   );
 
@@ -61,7 +62,10 @@ const Game = () => {
 
   const handleTTS = (text: string) => {
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "ja-JP"; // 일본어 설정
+    if (!isEmpty(language)) {
+      utterance.lang = language;
+    }
+
     window.speechSynthesis.speak(utterance);
     inputRef.current?.focus();
   };
@@ -70,10 +74,15 @@ const Game = () => {
     return (
       <div className={styles.clearScreen}>
         <h1 className={styles.clearText}>
-          おめでとうございます！ゲームをクリアしました！
+          Congratulations! <br />
+          You cleared the game!
         </h1>
-        <p className={styles.clearText}>経過時間: {formatTime(elapsedTime)}</p>
-        <p className={styles.clearText}>正確さ: {accuracy}%</p>
+        <br />
+        <br />
+        <p className={styles.clearTextSub}>
+          Elapsed Time: {formatTime(elapsedTime)}
+        </p>
+        <p className={styles.clearTextSub}>Accuracy: {accuracy}%</p>
         <button
           className={styles.restartButton}
           onClick={() =>
@@ -87,7 +96,7 @@ const Game = () => {
             )
           }
         >
-          再スタート
+          Restart
         </button>
       </div>
     );
@@ -116,7 +125,7 @@ const Game = () => {
           <FaVolumeUp />
         </button>
       </div>
-      <p className={styles.timer}>経過時間: {formatTime(elapsedTime)}</p>
+      <p className={styles.timer}>Elapsed Time: {formatTime(elapsedTime)}</p>
     </div>
   );
 };
