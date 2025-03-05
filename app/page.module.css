@@ -55,6 +55,7 @@
 .cardContainer {
   display: flex;
   flex-wrap: wrap; /* 가로로 여러 줄로 쌓이도록 설정 */
+  justify-content: flex-start; 
   gap: 20px;
   width: 100%; /* 컨테이너 너비를 100%로 설정 */
 }
@@ -67,6 +68,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* 그림자 색상을 어두운 색으로 설정 */
   padding: 20px;
+  width: 100%; /* 카드 너비를 3등분하여 설정 */
   max-width: 300px; /* 카드 최대 너비를 설정 */
   text-align: left;
   color: #ffffff; /* 카드 텍스트 색상을 흰색으로 설정 */
@@ -103,4 +105,24 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+  .card {
+    width: 100%; /* 작은 화면에서 카드 너비를 100%로 설정 */
+    max-width: none; /* 최대 너비 제한 해제 */
+  }
+
+  .cardContainer {
+    justify-content: center; /* 가운데 정렬 */
+  }
+}
+
+
+/* 모바일화면에서 비표시할 서비스 */
+@media (max-width: 768px) {
+  .typingGame {
+    display: none;
+  }
 }

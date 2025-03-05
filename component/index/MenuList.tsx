@@ -6,6 +6,7 @@ import { SlGameController } from "react-icons/sl";
 const MENUS = [
   {
     name: "Typing Game",
+    className: styles.typingGame,
     description: "Injoy the typing game",
     icon: <SlGameController />,
     link: "/typing",
@@ -44,7 +45,7 @@ const MENUS = [
 
 const MenuList = () => {
   return MENUS.map((tool, index) => (
-    <Link key={index} href={tool.link} passHref>
+    <Link key={index} href={tool.link} passHref className={tool.className}>
       <div className={styles.card}>
         <div className={styles.icon}>{tool.icon}</div>
         <div className={styles.cardContent}>
