@@ -1,0 +1,84 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #121212; /* 배경색을 다크로 설정 */
+  color: #ffffff; /* 텍스트 색상을 흰색으로 설정 */
+}
+
+.converterContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #1e1e1e; /* 컨테이너 배경색을 다크로 설정 */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffffff; /* 제목 텍스트 색상을 흰색으로 설정 */
+}
+
+.encodingSelector {
+  margin-bottom: 20px;
+  text-align: left;
+  width: 100%;
+}
+
+.encodingDropdown {
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #333;
+  background-color: #333; /* 드롭다운 배경색을 다크로 설정 */
+  color: #ffffff; /* 드롭다운 텍스트 색상을 흰색으로 설정 */
+  outline: none;
+  cursor: pointer;
+}
+
+.textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #333; /* 테두리 색상을 다크로 설정 */
+  border-radius: 4px;
+  font-size: 1rem;
+  resize: none;
+  background-color: #333; /* 텍스트 영역 배경색을 다크로 설정 */
+  color: #ffffff; /* 텍스트 색상을 흰색으로 설정 */
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.transformButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.transformIcon {
+  font-size: 2rem;
+  color: #ffffff; /* 아이콘 색상을 흰색으로 설정 */
+  rotate: 90deg;
+}
+
+.description {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #cccccc; /* 설명문 텍스트 색상을 밝은 회색으로 설정 */
+  text-align: center;
+}

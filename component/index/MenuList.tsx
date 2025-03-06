@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "@/app/page.module.css";
 import { SlGameController } from "react-icons/sl";
 import { JSX } from "react";
+import { MdOutlineSwapVerticalCircle } from "react-icons/md";
 // import { MdOutlineSwapVerticalCircle } from "react-icons/md";
 
 const MENUS: Array<{
@@ -18,12 +19,12 @@ const MENUS: Array<{
     icon: <SlGameController />,
     link: "/typing",
   },
-  // {
-  //   name: "Text Converter",
-  //   description: "Convert text to another format",
-  //   icon: <MdOutlineSwapVerticalCircle />,
-  //   link: "/converter",
-  // },
+  {
+    name: "Text Converter",
+    description: "Convert text to another format",
+    icon: <MdOutlineSwapVerticalCircle />,
+    link: "/converter",
+  },
   // {
   //   name: "Tool 3",
   //   description: "Description for Tool 3",
