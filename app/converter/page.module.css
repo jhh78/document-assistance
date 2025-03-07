@@ -27,13 +27,23 @@
   color: #ffffff; /* 제목 텍스트 색상을 흰색으로 설정 */
 }
 
-.encodingSelector {
-  margin-bottom: 20px;
-  text-align: left;
+.selectorContainer {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
+  margin-bottom: 20px;
 }
 
-.encodingDropdown {
+.encodingSelector {
+  text-align: left;
+}
+
+.modeSelector {
+  text-align: left;
+}
+
+.encodingDropdown,
+.modeDropdown {
   padding: 5px;
   font-size: 1rem;
   border-radius: 4px;
@@ -73,7 +83,17 @@
 .transformIcon {
   font-size: 2rem;
   color: #ffffff; /* 아이콘 색상을 흰색으로 설정 */
-  rotate: 90deg;
+}
+
+.copyButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.copyIcon {
+  font-size: 2rem;
+  color: #ffffff; /* 아이콘 색상을 흰색으로 설정 */
 }
 
 .description {
