@@ -14,6 +14,7 @@ import {
   processSHA256,
   processURI,
 } from "@/services/converterService";
+import { copyToClipboard } from "@/services/commonService";
 
 const Converter = () => {
   const inputTextRef = useRef<HTMLTextAreaElement>(null);
@@ -82,16 +83,6 @@ const Converter = () => {
     isEncodingRef.current = event.target.value === "encode";
   };
 
-  const handleCopyToClipboard = async () => {
-    if (outputTextRef.current) {
-      try {
-        await navigator.clipboard.writeText(outputTextRef.current.value);
-      } catch {
-        alert("Failed to copy text to clipboard.");
-      }
-    }
-  };
-
   return (
     <div className={styles.page}>
       <div className={styles.converterContainer}>
@@ -142,7 +133,10 @@ const Converter = () => {
           placeholder="Output will appear here..."
         />
         <div className={styles.iconContainer}>
-          <button className={styles.copyButton} onClick={handleCopyToClipboard}>
+          <button
+            className={styles.copyButton}
+            onClick={() => copyToClipboard(outputTextRef.current!.value)}
+          >
             <FaClipboard className={styles.copyIcon} />
           </button>
         </div>
