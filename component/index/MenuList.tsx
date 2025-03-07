@@ -3,7 +3,7 @@ import styles from "@/app/page.module.css";
 import { SlGameController } from "react-icons/sl";
 import { JSX } from "react";
 import { MdOutlineSwapVerticalCircle } from "react-icons/md";
-// import { MdOutlineSwapVerticalCircle } from "react-icons/md";
+import { CgPassword } from "react-icons/cg";
 
 const MENUS: Array<{
   name: string;
@@ -25,12 +25,12 @@ const MENUS: Array<{
     icon: <MdOutlineSwapVerticalCircle />,
     link: "/converter",
   },
-  // {
-  //   name: "Tool 3",
-  //   description: "Description for Tool 3",
-  //   icon: <FaCogs />,
-  //   link: "/tool3",
-  // },
+  {
+    name: "Password Maker",
+    description: "Generate a strong password. It's free",
+    icon: <CgPassword />,
+    link: "/password",
+  },
   // {
   //   name: "Tool 4",
   //   description: "Description for Tool 4",

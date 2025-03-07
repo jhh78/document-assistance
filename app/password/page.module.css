@@ -1,0 +1,127 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #121212; /* 다크 테마 배경색 */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 3rem; /* 글자 크기를 50% 키움 */
+  margin-bottom: 20px;
+  color: #ffffff; /* 텍스트 색상을 흰색으로 설정 */
+}
+
+.formGroup {
+  margin-bottom: 15px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.label,
+.checkboxLabel {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 1.5rem; /* 글자 크기를 50% 키움 */
+  color: #ffffff; /* 텍스트 색상을 흰색으로 설정 */
+}
+
+.input,
+.slider {
+  width: 100%;
+  padding: 12px; /* 패딩을 50% 키움 */
+  border: 1px solid #333; /* 테두리 색상을 다크로 설정 */
+  border-radius: 4px;
+  font-size: 1.5rem; /* 글자 크기를 50% 키움 */
+  background-color: #333; /* 입력 필드 배경색을 다크로 설정 */
+  color: #ffffff; /* 텍스트 색상을 흰색으로 설정 */
+}
+
+.slider {
+  margin: 10px 0;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkboxLabel input {
+  margin-right: 10px; /* 체크박스와 문자 사이에 공백 추가 */
+}
+
+.button {
+  padding: 15px 30px; /* 패딩을 50% 키움 */
+  font-size: 1.5rem; /* 글자 크기를 50% 키움 */
+  color: #ffffff; /* 버튼 텍스트 색상을 흰색으로 설정 */
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.result {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.password {
+  font-size: 2.25rem; /* 글자 크기를 50% 키움 */
+  font-weight: bold;
+  color: #007bff;
+  word-break: break-all;
+}
+
+.copyButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.copyIcon {
+  font-size: 3rem; /* 아이콘 크기를 50% 키움 */
+  color: #ffffff; /* 아이콘 색상을 흰색으로 설정 */
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 600px) {
+  .title {
+    font-size: 2rem; /* 작은 화면에서 제목 글자 크기 조정 */
+  }
+
+  .label,
+  .checkboxLabel {
+    font-size: 1.2rem; /* 작은 화면에서 레이블 글자 크기 조정 */
+  }
+
+  .input,
+  .slider {
+    font-size: 1.2rem; /* 작은 화면에서 입력 필드 글자 크기 조정 */
+    padding: 8px; /* 작은 화면에서 입력 필드 패딩 조정 */
+  }
+
+  .button {
+    font-size: 1.2rem; /* 작은 화면에서 버튼 글자 크기 조정 */
+    padding: 10px 20px; /* 작은 화면에서 버튼 패딩 조정 */
+  }
+
+  .password {
+    font-size: 1.5rem; /* 작은 화면에서 패스워드 글자 크기 조정 */
+  }
+
+  .copyIcon {
+    font-size: 2rem; /* 작은 화면에서 아이콘 크기 조정 */
+  }
+}
