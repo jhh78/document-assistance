@@ -2,7 +2,18 @@
 import React, { useRef } from "react";
 import { FaArrowDown, FaClipboard } from "react-icons/fa";
 import styles from "@/app/converter/page.module.css";
-import { ENCODING_TYPES, processURI } from "@/services/converterService";
+import {
+  ENCODING_TYPES,
+  processAES,
+  processASCII,
+  processBase64,
+  processBinary,
+  processHex,
+  processHtmlEntity,
+  processMD5,
+  processSHA256,
+  processURI,
+} from "@/services/converterService";
 
 const Converter = () => {
   const inputTextRef = useRef<HTMLTextAreaElement>(null);
@@ -15,6 +26,45 @@ const Converter = () => {
 
     if (encodingRef.current === ENCODING_TYPES.ENCODE_URI) {
       outputTextRef.current.value = processURI(
+        inputTextRef.current.value,
+        isEncodingRef.current
+      );
+    } else if (encodingRef.current === ENCODING_TYPES.ENCODE_BASE64) {
+      outputTextRef.current.value = processBase64(
+        inputTextRef.current.value,
+        isEncodingRef.current
+      );
+    } else if (encodingRef.current === ENCODING_TYPES.ENCODE_HEX) {
+      outputTextRef.current.value = processHex(
+        inputTextRef.current.value,
+        isEncodingRef.current
+      );
+    } else if (encodingRef.current === ENCODING_TYPES.ENCODE_BINARY) {
+      outputTextRef.current.value = processBinary(
+        inputTextRef.current.value,
+        isEncodingRef.current
+      );
+    } else if (encodingRef.current === ENCODING_TYPES.ENCODE_AES) {
+      outputTextRef.current.value = processAES(
+        inputTextRef.current.value,
+        isEncodingRef.current
+      );
+    } else if (encodingRef.current === ENCODING_TYPES.HASH_SHA256) {
+      outputTextRef.current.value = processSHA256(inputTextRef.current.value);
+    } else if (encodingRef.current === ENCODING_TYPES.HASH_MD5) {
+      outputTextRef.current.value = processMD5(inputTextRef.current.value);
+    } else if (encodingRef.current === ENCODING_TYPES.ENCODE_ASCII) {
+      outputTextRef.current.value = processASCII(
+        inputTextRef.current.value,
+        isEncodingRef.current
+      );
+    } else if (encodingRef.current === ENCODING_TYPES.ENCODE_HEX_CODE) {
+      outputTextRef.current.value = processHex(
+        inputTextRef.current.value,
+        isEncodingRef.current
+      );
+    } else if (encodingRef.current === ENCODING_TYPES.ENCODE_HTML_ENTITY) {
+      outputTextRef.current.value = processHtmlEntity(
         inputTextRef.current.value,
         isEncodingRef.current
       );
@@ -36,7 +86,6 @@ const Converter = () => {
     if (outputTextRef.current) {
       try {
         await navigator.clipboard.writeText(outputTextRef.current.value);
-        alert("Text copied to clipboard!");
       } catch {
         alert("Failed to copy text to clipboard.");
       }
