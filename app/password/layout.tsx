@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import styles from "@/app/typing/page.module.css";
+import styles from "@/app/password/page.module.css";
 
 export const metadata: Metadata = {
   title: "Password Generator",
