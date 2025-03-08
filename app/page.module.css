@@ -7,7 +7,6 @@
   padding: 20px;
   background-color: #121212; /* 다크 배경색 */
   color: #ffffff; /* 텍스트 색상을 흰색으로 설정 */
-  position: relative;
 }
 
 .header {
@@ -109,26 +108,8 @@
   text-overflow: ellipsis;
 }
 
-.githubMark {
-  position: absolute;
-  filter: invert(1);
-  top: 0;
-  right: 0;
-  transform-origin: top right; /* 스케일에 반응하도록 설정 */
-  transition: transform 0.5s ease-in-out; /* 자연스럽게 커지도록 애니메이션 추가 */
-}
-
-.githubMark:hover {
-  animation: octocat-wave 560ms ease-in-out;
-  transform: scale(1.5); 
-}
-
 /* 반응형 디자인을 위한 미디어 쿼리 */
 @media (max-width: 768px) {
-  .githubMark, 
-  .githubMark:hover {
-    transform: scale(0.6); 
-  }
 }
 
 /* 모바일화면에서 비표시할 서비스 */
