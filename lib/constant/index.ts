@@ -1,12 +1,3 @@
-import Link from "next/link";
-import styles from "@/app/page.module.css";
-import { SlGameController } from "react-icons/sl";
-import { JSX } from "react";
-import { MdOutlineSwapVerticalCircle } from "react-icons/md";
-import { CgPassword } from "react-icons/cg";
-import { IoTodayOutline } from "react-icons/io5";
-import { FaRegFilePdf } from "react-icons/fa6";
-
 const MENUS: Array<{
   name: string;
   className?: string;
@@ -45,20 +36,10 @@ const MENUS: Array<{
     icon: <FaRegFilePdf />,
     link: "/pdf-slice",
   },
+  // {
+  //   name: "Tool 6",
+  //   description: "Description for Tool 6",
+  //   icon: <FaPencilRuler />,
+  //   link: "/tool6",
+  // },
 ];
-
-const MenuList = () => {
-  return MENUS.map((tool, index) => (
-    <Link key={index} href={tool.link} passHref className={tool.className}>
-      <div className={styles.card}>
-        <div className={styles.icon}>{tool.icon}</div>
-        <div className={styles.cardContent}>
-          <h2>{tool.name}</h2>
-          <p>{tool.description}</p>
-        </div>
-      </div>
-    </Link>
-  ));
-};
-
-export default MenuList;

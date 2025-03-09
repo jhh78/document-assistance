@@ -1,0 +1,129 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #121212; /* Dark background color */
+  color: #ffffff; /* Text color set to white */
+}
+
+.header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #ffffff; /* Title text color set to white */
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.select,
+.input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #333; /* Border color set to dark */
+  border-radius: 5px;
+  background-color: #1e1e1e; /* Input field background color set to dark */
+  color: #ffffff; /* Text color set to white */
+  width: 100%;
+  max-width: 300px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #ffffff; /* Button text color set to white */
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.main {
+  width: 100%;
+  max-width: 880px; /* Increased max-width by 10% */
+  text-align: center;
+}
+
+.progressBar {
+  font-size: 2.4rem; /* Increased font size for loading message */
+  color: #007bff;
+}
+
+.error {
+  font-size: 2.4rem; /* Increased font size for error message */
+  color: #ff0000; /* Error message color set to red */
+}
+
+.holidayTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.holidayTable th,
+.holidayTable td {
+  border: 1px solid #333; /* Border color set to dark */
+  padding: 10px;
+  text-align: left;
+  background-color: #1e1e1e; /* Table cell background color set to dark */
+  color: #ffffff; /* Text color set to white */
+}
+
+.holidayTable th {
+  background-color: #333; /* Table header background color set to dark */
+}
+
+.holidayTable th.date,
+.holidayTable td.date {
+  width: 150px; /* Set a fixed width for the Date column */
+}
+
+.holidayTable th.name,
+.holidayTable td.name {
+  width: auto; /* Allow the Name column to take the remaining space */
+}
+
+.initialMessage {
+  font-size: 1.5rem; /* Increased font size for initial message */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .select,
+  .input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .holidayTable th,
+  .holidayTable td {
+    padding: 5px;
+  }
+
+  .holidayTable th.date,
+  .holidayTable td.date {
+    width: 150px; /* Adjust the width for smaller screens */
+  }
+}
