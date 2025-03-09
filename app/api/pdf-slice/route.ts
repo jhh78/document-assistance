@@ -20,8 +20,6 @@ export const POST = async (req: NextRequest) => {
     });
   }
 
-  const fileName = encodeURIComponent(file.name.split(".")[0]); // 파일 이름을 URL 인코딩
-
   try {
     const buffer = Buffer.from(await file.arrayBuffer());
     const pdfDoc = await PDFDocument.load(buffer);
@@ -66,7 +64,7 @@ export const POST = async (req: NextRequest) => {
     console.log("Archive finalized");
 
     const zipBuffer = Buffer.concat(chunks);
-    console.log("ZIP buffer created", zipBuffer, fileName);
+    console.log("ZIP buffer created");
 
     return new Response(zipBuffer, {
       headers: {
