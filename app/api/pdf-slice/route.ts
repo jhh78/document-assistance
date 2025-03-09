@@ -34,22 +34,7 @@ export const POST = async (req: NextRequest) => {
       },
     });
 
-    writableStream.on("finish", () => {
-      console.log("Writable stream finished");
-    });
-
-    writableStream.on("error", (err) => {
-      console.error("Writable stream error:", err);
-      throw err;
-    });
-
-    archive.on("error", (err) => {
-      console.error("Archiver error:", err);
-    });
-
     archive.pipe(writableStream);
-
-    console.log(`Processing ${numPages} pages`);
 
     for (let i = 0; i < numPages; i++) {
       const newPdf = await PDFDocument.create();
@@ -61,10 +46,8 @@ export const POST = async (req: NextRequest) => {
     }
 
     await archive.finalize();
-    console.log("Archive finalized");
 
     const zipBuffer = Buffer.concat(chunks);
-    console.log("ZIP buffer created");
 
     return new Response(zipBuffer, {
       headers: {
@@ -72,8 +55,7 @@ export const POST = async (req: NextRequest) => {
         "Content-Disposition": `attachment; filename="pages.zip"`,
       },
     });
-  } catch (error) {
-    console.error("Error during PDF processing:", error);
+  } catch {
     return new Response(JSON.stringify({ error: "PDF processing failed" }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
