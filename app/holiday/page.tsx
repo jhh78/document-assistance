@@ -10,7 +10,7 @@ import SearchButton from "@/component/holiday/SearchButton";
 import YearSelect from "@/component/holiday/YearSelect";
 import { getHolidays } from "@/services/holidayService";
 import { useHolidayStore } from "@/stores/holiday";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const Page = () => {
   const countryCodeRef = useRef<HTMLSelectElement>(null);
@@ -50,6 +50,16 @@ const Page = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    return () => {
+      useHolidayStore.setState({
+        holidays: [],
+        loading: false,
+        error: "",
+      });
+    };
+  }, []);
 
   return (
     <div className={styles.page}>
