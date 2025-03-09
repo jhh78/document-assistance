@@ -4,6 +4,8 @@ import { SlGameController } from "react-icons/sl";
 import { JSX } from "react";
 import { MdOutlineSwapVerticalCircle } from "react-icons/md";
 import { CgPassword } from "react-icons/cg";
+import { IoTodayOutline } from "react-icons/io5";
+import { FaRegFilePdf } from "react-icons/fa6";
 
 const MENUS: Array<{
   name: string;
@@ -27,28 +29,22 @@ const MENUS: Array<{
   },
   {
     name: "Password Maker",
-    description: "Generate a strong password. It's free",
+    description: "Create your own creative password.",
     icon: <CgPassword />,
     link: "/password",
   },
-  // {
-  //   name: "Tool 4",
-  //   description: "Description for Tool 4",
-  //   icon: <FaHammer />,
-  //   link: "/tool4",
-  // },
-  // {
-  //   name: "Tool 5",
-  //   description: "Description for Tool 5",
-  //   icon: <FaScrewdriver />,
-  //   link: "/tool5",
-  // },
-  // {
-  //   name: "Tool 6",
-  //   description: "Description for Tool 6",
-  //   icon: <FaPencilRuler />,
-  //   link: "/tool6",
-  // },
+  {
+    name: "Search Holiday",
+    description: "When will the holiday be? I'm looking forward to it.",
+    icon: <IoTodayOutline />,
+    link: "/holiday",
+  },
+  {
+    name: "PDF Slicer",
+    description: "Split PDF files into multiple files.",
+    icon: <FaRegFilePdf />,
+    link: "/pdf-slice",
+  },
 ];
 
 const MenuList = () => {
