@@ -5,11 +5,18 @@ import { handleUpload } from "@/services/pdfSliceService";
 
 const Home = () => {
   const [file, setFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       setFile(e.target.files[0]);
     }
+  };
+
+  const handleUploadAndSlice = async () => {
+    setLoading(true);
+    await handleUpload(file);
+    setLoading(false);
   };
 
   return (
@@ -21,13 +28,18 @@ const Home = () => {
       </p>
       <input
         type="file"
+        disabled={loading}
         accept="application/pdf"
         onChange={handleFileChange}
         className={styles.input}
       />
 
       {file && (
-        <button onClick={() => handleUpload(file)} className={styles.button}>
+        <button
+          onClick={handleUploadAndSlice}
+          className={styles.button}
+          disabled={loading}
+        >
           Upload and Slice
         </button>
       )}
