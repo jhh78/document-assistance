@@ -42,7 +42,6 @@ export const POST = async (req: NextRequest) => {
       newPdf.addPage(copiedPage);
       const pdfBytes = await newPdf.save();
       archive.append(Buffer.from(pdfBytes), { name: `page-${i + 1}.pdf` });
-      console.log(`Page ${i + 1} added to archive`);
     }
 
     await archive.finalize();
