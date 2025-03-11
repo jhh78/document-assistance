@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import styles from "./page.module.css";
 import { handleUpload } from "@/services/pdfSliceService";
+import FileUpload from "@/component/pdf-slice/FileUpload";
+import styles from "@/app/pdf-slice/page.module.css";
 
 const Home = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -19,30 +20,25 @@ const Home = () => {
     setLoading(false);
   };
 
+  const handleReset = () => {
+    setFile(null);
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Upload PDF And Slice it.</h1>
       <p className={styles.description}>
         You can upload a PDF file and process each page as a separate file. The
-        processed file will be downloaded in ZIP format.
+        processed file will be downloaded in ZIP format. The maximum file size
+        is <span className={styles.emphasis}>4.5MB</span>.
       </p>
-      <input
-        type="file"
-        disabled={loading}
-        accept="application/pdf"
-        onChange={handleFileChange}
-        className={styles.input}
+      <FileUpload
+        file={file}
+        loading={loading}
+        onFileChange={handleFileChange}
+        onUpload={handleUploadAndSlice}
+        onReset={handleReset}
       />
-
-      {file && (
-        <button
-          onClick={handleUploadAndSlice}
-          className={styles.button}
-          disabled={loading}
-        >
-          Upload and Slice
-        </button>
-      )}
     </div>
   );
 };
